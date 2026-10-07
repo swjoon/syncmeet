@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.backend.backend.mapper.UserMapper">
+
+    <resultMap id="userResultMap"
+               type="com.backend.backend.dto.UserDto">
+        <id property="userCode" column="um_user_code"/>
+        <result property="userName" column="um_user_name"/>
+        <result property="oauthType" column="um_oauth_type"/>
+        <result property="oauthSubject" column="um_oauth_subject"/>
+        <result property="regDate" column="um_reg_date"/>
+    </resultMap>
+
+    <select id="findByOauth" resultMap="userResultMap">
+        SELECT um_user_code,
+               um_user_name,
+               um_oauth_type,
+               um_oauth_subject,
+               um_reg_date
+        FROM "TBL_USER_MAS"
+        WHERE um_oauth_type = #{oauthType}
+          AND um_oauth_subject = #{oauthSubject}
+    </select>
+
+    <insert id="insertIfAbsent">
+        INSERT INTO "TBL_USER_MAS"
+            (um_user_name, um_oauth_type, um_oauth_subject)
+        VALUES
+            (#{userName}, #{oauthType}, #{oauthSubject})
+        ON CONFLICT (um_oauth_type, um_oauth_subject) DO NOTHING
+    </insert>
+
+</mapper>
