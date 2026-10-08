@@ -1,6 +1,6 @@
 package com.backend.backend.config;
 
-import com.backend.backend.service.SyncMeetOidcUserService;
+import com.backend.backend.auth.service.SyncMeetOidcUserService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

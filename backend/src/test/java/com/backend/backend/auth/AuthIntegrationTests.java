@@ -1,7 +1,7 @@
 package com.backend.backend.auth;
 
-import com.backend.backend.dto.UserDto;
-import com.backend.backend.service.UserService;
+import com.backend.backend.user.dto.UserDto;
+import com.backend.backend.user.service.UserService;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.JWSHeader;

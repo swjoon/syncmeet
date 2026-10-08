@@ -1,7 +1,7 @@
-package com.backend.backend.service;
+package com.backend.backend.user.service;
 
-import com.backend.backend.dto.UserDto;
-import com.backend.backend.mapper.UserMapper;
+import com.backend.backend.user.dto.UserDto;
+import com.backend.backend.user.mapper.UserMapper;
 
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
