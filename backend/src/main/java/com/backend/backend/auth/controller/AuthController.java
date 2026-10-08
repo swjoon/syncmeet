@@ -1,9 +1,9 @@
-package com.backend.backend.controller;
+package com.backend.backend.auth.controller;
 
-import com.backend.backend.dto.CsrfResponseDto;
-import com.backend.backend.dto.UserDto;
-import com.backend.backend.dto.UserResponseDto;
-import com.backend.backend.service.UserService;
+import com.backend.backend.auth.dto.CsrfResponseDto;
+import com.backend.backend.user.dto.UserDto;
+import com.backend.backend.user.dto.UserResponseDto;
+import com.backend.backend.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

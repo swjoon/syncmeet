@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.backend.backend.mapper.UserMapper">
+<mapper namespace="com.backend.backend.user.mapper.UserMapper">
 
     <resultMap id="userResultMap"
-               type="com.backend.backend.dto.UserDto">
+               type="com.backend.backend.user.dto.UserDto">
         <id property="userCode" column="um_user_code"/>
         <result property="userName" column="um_user_name"/>
         <result property="oauthType" column="um_oauth_type"/>

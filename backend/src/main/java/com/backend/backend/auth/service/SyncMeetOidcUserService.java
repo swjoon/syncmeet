@@ -1,5 +1,6 @@
-package com.backend.backend.service;
+package com.backend.backend.auth.service;
 
+import com.backend.backend.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;

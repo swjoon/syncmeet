@@ -1,4 +1,4 @@
-package com.backend.backend.dto;
+package com.backend.backend.user.dto;
 
 import java.time.OffsetDateTime;
 import lombok.Getter;

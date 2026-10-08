@@ -1,4 +1,4 @@
-package com.backend.backend.dto;
+package com.backend.backend.auth.dto;
 
 public record CsrfResponseDto(String headerName, String token) {
 }

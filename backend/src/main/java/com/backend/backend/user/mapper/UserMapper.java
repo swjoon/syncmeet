@@ -1,6 +1,6 @@
-package com.backend.backend.mapper;
+package com.backend.backend.user.mapper;
 
-import com.backend.backend.dto.UserDto;
+import com.backend.backend.user.dto.UserDto;
 
 import java.util.Optional;
 import org.apache.ibatis.annotations.Mapper;
