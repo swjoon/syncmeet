@@ -1,12 +1,14 @@
 package com.backend.backend.auth.controller;
 
 import com.backend.backend.auth.dto.CsrfResponseDto;
+import com.backend.backend.auth.enums.OAuthProvider;
 import com.backend.backend.user.dto.UserDto;
 import com.backend.backend.user.dto.UserResponseDto;
 import com.backend.backend.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,11 +24,17 @@ public class AuthController {
     private final UserService userService;
 
     @GetMapping("/me")
-    public UserResponseDto me(@AuthenticationPrincipal OidcUser principal) {
-        if (principal == null) {
+    public UserResponseDto me(
+            @AuthenticationPrincipal OidcUser principal,
+            OAuth2AuthenticationToken authentication
+    ) {
+        if (principal == null || authentication == null) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "로그인이 필요합니다.");
         }
-        UserDto user = userService.findGoogleUser(principal.getSubject())
+        OAuthProvider provider = OAuthProvider.fromRegistrationId(
+                authentication.getAuthorizedClientRegistrationId()
+        );
+        UserDto user = userService.findUser(provider, principal.getSubject())
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.UNAUTHORIZED, "회원 정보를 찾을 수 없습니다."));
         return new UserResponseDto(user.getUserCode(), user.getUserName());
