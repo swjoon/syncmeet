@@ -6,3 +6,16 @@ spring:
           google:
             client-id: test-client-id
             client-secret: test-client-secret
+          kakao:
+            client-id: test-kakao-client-id
+            client-secret: test-kakao-client-secret
+            provider: test-kakao
+        provider:
+          # 컨텍스트 로딩 테스트에서 외부 discovery 요청을 하지 않는다.
+          # 로그인 통합 테스트에서는 로컬 가짜 서버 주소로 덮어쓴다.
+          test-kakao:
+            authorization-uri: http://localhost/test-kakao/authorize
+            token-uri: http://localhost/test-kakao/token
+            user-info-uri: http://localhost/test-kakao/userinfo
+            jwk-set-uri: http://localhost/test-kakao/jwks
+            user-name-attribute: sub

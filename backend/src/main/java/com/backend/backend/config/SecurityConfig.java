@@ -28,7 +28,7 @@ public class SecurityConfig {
                         .failureHandler((request, response, exception) -> {
                             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                             response.setContentType("application/json;charset=UTF-8");
-                            response.getWriter().write("{\"message\":\"Google 로그인에 실패했습니다.\"}");
+                            response.getWriter().write("{\"message\":\"소셜 로그인에 실패했습니다.\"}");
                         })
                 )
                 .exceptionHandling(exception -> exception
